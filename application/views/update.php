@@ -51,8 +51,8 @@
 	<div class="title">Updata Data User</div>
 	<center>
 	<table>
-		<form method="post" action="../updateAction">
-			<?php foreach ($isi->result() as $value): ?>
+		<?php foreach ($isi->result() as $value): ?>
+		<form method="post" action="../updateAction/<?php echo $value->id ?>">
 				<tr><td><input class="form" type="hidden" name="id" value="<?php echo $value->id; ?>"></td></tr>
 				<tr><td><input class="form" type="text" name="username" value="<?php echo $value->username; ?>"></td></tr>
 				<tr><td><input class="form" type="password" name="password" value="<?php echo $value->password; ?>"></td></tr>

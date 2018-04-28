@@ -40,6 +40,9 @@
 <body>
 <div id="header">
 	<div class="title">Daftar User</div>
+	<h1>Login Berhasil</h1>
+	<h2>Selamat datang <?php echo $this->session->userdata("nama"); ?></h2>
+	<a href="logout">Logout</a>
 	<center>
 	<a href="add">Tambah</a>
 	<table border="1" class="table">

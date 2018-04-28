@@ -6,6 +6,7 @@ class User extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		$this->load->model('M_user');
 		//Load Dependencies
 
 	}
@@ -13,8 +14,12 @@ class User extends CI_Controller {
 	// List all your items
 	public function index()
 	{
-		$data['isi'] = $this->db->get('user');//membuka tabel user dan mengambil data tiap field dan ditampung di variabel isi
-		$this->load->view('showUser' , $data);//membuka form index dan memasukkan variabel data
+		if($this->session->userdata('status') == "Login"){	
+			$data['isi'] = $this->db->get('user');//membuka tabel user dan mengambil data tiap field dan ditampung di variabel isi
+			$this->load->view('showUser' , $data);//membuka form index dan memasukkan variabel data
+		}else{
+			$this->load->view('login');
+		}
 	}
 
 	// Add a new item
@@ -54,11 +59,12 @@ class User extends CI_Controller {
 					'fullname' => $this->input->post('fullname'),
 					'level' => $this->input->post('level'));
 
+		$this->db->get('user');
 		$this->db->where('id', $id);
 		$sukses = $this->db->update('user', $data);
 
 		if($sukses){
-			header("Location:../User/index");
+			header("Location:../index");
 		}else{
 			echo "Gagal Update !!";
 		}
@@ -82,12 +88,28 @@ class User extends CI_Controller {
 
 	public function login(){
 
-		$this->load->view('user');
+		$this->load->view('login');
 
 	}
 
 	public function loginAction(){
-		$this->db->get('id',$id);
+		$username = $this->input->post('username');
+		$password = $this->input->post('password');
+		$where = array('username' => $username,
+					'password' => $password);
+		$cek = $this->M_user->cek_login('user', $where)->num_rows();
+		if($cek > 0){
+			$data_session = array('nama' => $username, 'status' => "Login");
+			$this->session->set_userdata($data_session);
+			header("Location: index");
+		}else{
+			echo "username dan Password salah !!";
+		}
+	}
+
+	function logout(){
+		$this->session->sess_destroy();
+		header("Location: index");
 	}
 }
 
