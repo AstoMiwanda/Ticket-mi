@@ -43,7 +43,7 @@ body{
 	margin-top: 25px;
 	border: none;
 	border-radius: 3px;
-	background-color: #0984e3;
+	background-color: #1F6BEF;
 	color: #fff;
 	font-weight: bold;
 }

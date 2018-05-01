@@ -14,7 +14,7 @@ class User extends CI_Controller {
 	// List all your items
 	public function index()
 	{
-		if($this->session->userdata('status') == "Login"){	
+		if($this->session->userdata('status') == "login"){	
 			$data['isi'] = $this->db->get('user');//membuka tabel user dan mengambil data tiap field dan ditampung di variabel isi
 			$this->load->view('showUser' , $data);//membuka form index dan memasukkan variabel data
 		}else{
@@ -25,7 +25,11 @@ class User extends CI_Controller {
 	// Add a new item
 	public function add()
 	{
-		$this->load->view('userAdd');
+		if($this->session->userdata('status') == "login"){	
+			$this->load->view('userAdd');
+		}else{
+			$this->load->view('login');
+		}
 	}
 
 	public function addAction()
@@ -40,7 +44,7 @@ class User extends CI_Controller {
 		if($sukses){
 			header("Location:../User/index");
 		}else{
-			echo "gagal";
+			confirm("Add User Gagal !!");;
 		}
 	}
 	//Update one item
@@ -81,7 +85,7 @@ class User extends CI_Controller {
 		if($delete){
 			header("Location:../index");
 		}else{
-			echo "Delete gagal bego !!";
+			echo "Delete gagal !!";
 		}
 
 	}
@@ -99,11 +103,13 @@ class User extends CI_Controller {
 					'password' => $password);
 		$cek = $this->M_user->cek_login('user', $where)->num_rows();
 		if($cek > 0){
-			$data_session = array('nama' => $username, 'status' => "Login");
+			$data_session = array('nama' => $username, 'status' => "login");
 			$this->session->set_userdata($data_session);
 			header("Location: index");
 		}else{
-			echo "username dan Password salah !!";
+			echo "<script>alert('There are no fields to generate a report');
+			window.location.href='index';</script>";
+			//redirect('User/index');
 		}
 	}
 

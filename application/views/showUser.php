@@ -23,7 +23,7 @@
 		text-align: center;
 		padding: 15px;
 		font-size: 18pt;
-		background-color: #0984e3;
+		background-color: #0BA1F4;
 		color: #fff;
 	}
 	#header .table{
@@ -44,7 +44,7 @@
 	<h2>Selamat datang <?php echo $this->session->userdata("nama"); ?></h2>
 	<a href="logout">Logout</a>
 	<center>
-	<a href="add">Tambah</a>
+	<a href="add" style="color: #23CF5F">Tambah</a>
 	<table border="1" class="table">
 		<tr>
 			<th>Username</th>
@@ -57,8 +57,8 @@
 			<td><?php echo $value->username; ?></td>
 			<td><?php echo $value->fullname; ?></td>
 			<td><?php echo $value->level; ?></td>
-			<td><a href="delete/<?php echo $value->id ?>">Hapus</a></td>
-			<td><a href="update/<?php echo $value->id ?>">Edit</a></td>
+			<td><a style="color: #F97A66" href="delete/<?php echo $value->id ?>">Hapus</a></td>
+			<td><a style="color: #FCC04E" href="update/<?php echo $value->id ?>">Edit</a></td>
 		</tr>
 		<?php endforeach ?>
 		</table>
