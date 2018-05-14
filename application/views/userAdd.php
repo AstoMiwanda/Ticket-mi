@@ -58,10 +58,10 @@ body{
 	<center>
 		<table>
 			<form method="post" action="addAction">
-				<tr><td><input class="form" type="text" name="username" placeholder="Username" class="form"></td></tr>
-				<tr><td><input class="form" type="password" name="password" placeholder="Password" class="form"></td></tr>
-				<tr><td><input class="form" type="text" name="fullname" placeholder="Fullname" class="form"></td></tr>
-				<tr><td><input class="form" type="text" name="level" placeholder="Level" class="form"></td></tr>
+				<tr><td><input class="form" type="text" name="username" placeholder="Username" class="form" required></td></tr>
+				<tr><td><input class="form" type="password" name="password" placeholder="Password" class="form" required></td></tr>
+				<tr><td><input class="form" type="text" name="fullname" placeholder="Fullname" class="form" required></td></tr>
+				<tr><td><input class="form" type="text" name="level" placeholder="Level" class="form" required></td></tr>
 				<tr><td><input class="submit" type="submit" name="Daftar"></td></tr>
 			</form>
 		</table>

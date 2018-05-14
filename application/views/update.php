@@ -54,11 +54,11 @@
 		<?php foreach ($isi->result() as $value): ?>
 		<form method="post" action="../updateAction/<?php echo $value->id ?>">
 				<tr><td><input class="form" type="hidden" name="id" value="<?php echo $value->id; ?>"></td></tr>
-				<tr><td><input class="form" type="text" name="username" value="<?php echo $value->username; ?>"></td></tr>
-				<tr><td><input class="form" type="password" name="password" value="<?php echo $value->password; ?>"></td></tr>
-				<tr><td><input class="form" type="text" name="fullname" value="<?php echo $value->fullname; ?>"></td></tr>
-				<tr><td><input class="form" type="text" name="level" value="<?php echo $value->level; ?>"></td></tr>
-				<tr><td><input class="submit" type="submit" name="Updata"></td></tr>
+				<tr><td><input required class="form" type="text" name="username" value="<?php echo $value->username; ?>"></td></tr>
+				<tr><td><input required class="form" type="password" name="password" value="<?php echo $value->password; ?>"></td></tr>
+				<tr><td><input required class="form" type="text" name="fullname" value="<?php echo $value->fullname; ?>"></td></tr>
+				<tr><td><input required class="form" type="text" name="level" value="<?php echo $value->level; ?>"></td></tr>
+				<tr><td><input class="submit" type="submit" name="Update"></td></tr>
 			<?php endforeach ?>
 		</form>
 	</table>

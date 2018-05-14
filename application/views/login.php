@@ -12,7 +12,6 @@ body{
 }
 #input{
 	width: 40%;
-	height: 1 vh;
 	margin: auto;
 	padding: 0;
 	background-color: #f4f4f4;
